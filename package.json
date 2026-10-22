@@ -1,0 +1,20 @@
+{
+  "name": "workos-project-management",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @workos/api\" \"npm run dev -w @workos/web\"",
+    "build": "npm run build -w @workos/api && npm run build -w @workos/web",
+    "test": "npm run test -w @workos/api && npm run test -w @workos/web",
+    "db:generate": "npm run prisma:generate -w @workos/api",
+    "db:migrate": "npm run prisma:migrate -w @workos/api",
+    "db:seed": "npm run prisma:seed -w @workos/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "fast-check": "^4.10.2"
+  }
+}
